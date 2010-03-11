@@ -342,8 +342,7 @@ module Paperclip
     def destroy_attached_files
       logger.info("[paperclip] Deleting attachments.")
       each_attachment do |name, attachment|
-        attachment.send(:queue_existing_for_delete)
-        attachment.send(:flush_deletes)
+        attachment.destroy
       end
     end
   end
