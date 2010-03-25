@@ -649,6 +649,14 @@ class AttachmentTest < Test::Unit::TestCase
                 @attachment.destroy
                 @existing_names.each{|f| assert ! File.exists?(f) }
               end
+
+              should "should clear write queue when clearing attachment" do
+                @attachment.assign(@file)
+
+                @attachment.clear
+
+                assert_equal @attachment.queued_for_write, {}
+              end
             end
           end
         end

@@ -151,6 +151,7 @@ module Paperclip
     # use #destroy.
     def clear
       queue_existing_for_delete
+      @queued_for_write  = {}
       @errors            = {}
     end
 
